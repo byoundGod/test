@@ -9,7 +9,13 @@
         <i class="el-icon-arrow-down"></i>
       </div>
       <div class="website-list" :style="'display:' + item.static">
-        <router-link :to="link.link" v-for="(link,i) in item.list" :key="i">{{link.title}}</router-link>
+        <router-link
+          :to="link.link"
+          v-for="(link,i) in item.list"
+          :class="link.isFocus?'link-focus':''"
+          @click.native="setFocus"
+          :key="i"
+        >{{link.title}}</router-link>
       </div>
     </div>
   </div>
@@ -27,13 +33,17 @@ export default {
           static: "none",
           list: [
             {
-              title: "视频管理",
-              link: "/about"
+              title: "文章管理",
+              link: "/management/article",
+              isFocus: false
             }
           ]
         }
       ]
     };
+  },
+  mounted() {
+    this.setFocus();
   },
   methods: {
     setStatic(i) {
@@ -41,6 +51,16 @@ export default {
         this.navList[i].static = "flex";
       } else {
         this.navList[i].static = "none";
+      }
+    },
+    setFocus() {
+      for (let i in this.navList) {
+        for (let j in this.navList[i].list) {
+          this.navList[i].list[j].isFocus = false;
+          if (this.navList[i].list[j].link == this.$route.path) {
+            this.navList[i].list[j].isFocus = true;
+          }
+        }
       }
     }
   }
@@ -78,8 +98,12 @@ a {
   line-height: 60px;
   color: #fff;
   text-decoration: none;
+  text-align: center;
 }
 a:hover {
+  background-color: rgb(67, 74, 80);
+}
+.link-focus {
   background-color: rgb(67, 74, 80);
 }
 </style>

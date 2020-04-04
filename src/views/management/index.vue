@@ -1,8 +1,6 @@
 <template>
   <div id="app">
     <div class="nav" :style="'width:'+navWidth+'px'">
-      <!-- <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>-->
       <div class="title">导航栏</div>
       <Nav :style="'display:'+navDisplay"></Nav>
     </div>
@@ -28,9 +26,9 @@ import Nav from '../../components/nav';
 export default {
   data: function() {
     return {
-      navWidth: 0,
-      navStatic: false,
-      navDisplay:'none'
+      navWidth: 200,
+      navStatic: true,
+      navDisplay:'block'
     };
   },
   components: {
@@ -57,7 +55,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   width: 100%;
   color: #2c3e50;
   height: 100vh;
@@ -71,6 +69,7 @@ export default {
   background-color: #2c3e50;
   overflow: hidden;
   transition: all 0.2s;
+  flex-shrink: 0;
 }
 .content {
   flex: 1;
@@ -97,6 +96,8 @@ export default {
 }
 .middle {
   flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
 }
 .footer {
   height: 60px;
@@ -106,5 +107,6 @@ export default {
 .title {
   color: #fff;
   line-height: 60px;
+  text-align: center;
 }
 </style>

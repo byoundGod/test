@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/home/home.vue'
+import Management from '../views/management/index.vue'
 
 Vue.use(VueRouter)
 
@@ -15,12 +15,18 @@ const routes = [{
     component: () => import( /* webpackChunkName: "about" */ '../views/register/register.vue')
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: Home,
+    path: '/management',
+    name: 'Management',
+    component: Management,
     children: [{
-      path: "/about",
-      component: () => import( /* webpackChunkName: "about" */ '../views/About.vue')
+      path: "",
+      component: () => import( /* webpackChunkName: "about" */ '../views/management/article')
+    },{
+      path: "/management/article",
+      component: () => import( /* webpackChunkName: "about" */ '../views/management/article')
+    },{
+      path: "/management/edit",
+      component: () => import( /* webpackChunkName: "about" */ '../views/management/article/edit.vue')
     }]
   }
 ]

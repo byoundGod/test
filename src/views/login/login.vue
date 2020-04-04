@@ -33,7 +33,7 @@ export default {
   methods: {
     login() {
       if (this.fromData.account == "123" && this.fromData.password == "123") {
-        this.$router.push({ path: "/home" });
+        this.$router.push({ path: "/management" });
       }else{
         this.$message.error('账号或者密码错误！');
       }
@@ -78,6 +78,7 @@ a:hover{
 .clearfix {
   font-size: 1.2rem;
   font-weight: bold;
+  text-align: center;
 }
 .clearfix:after {
   clear: both;

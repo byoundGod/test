@@ -81,6 +81,7 @@ a:hover {
 .clearfix {
   font-size: 1.2rem;
   font-weight: bold;
+   text-align: center;
 }
 .clearfix:after {
   clear: both;
