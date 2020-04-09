@@ -14,13 +14,14 @@ export default {
       editorContent: ""
     };
   },
-  props: ["catchData"], // 接收父组件的方法
+  // props: ["catchData"], // 接收父组件的方法
   mounted() {
     this.editor = new E(this.$refs.editorElem);
     // 编辑器的事件，每次改变会获取其html内容
     this.editor.customConfig.onchange = html => {
       this.editorContent = html;
-      console.log(this.editorContent);
+      // console.log(this.editorContent);
+      this.$emit('catchData',this.editorContent);
     //   this.catchData(this.editorContent); // 把这个html通过catchData的方法传入父组件
     };
     this.editor.customConfig.menus = [
